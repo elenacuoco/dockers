@@ -231,22 +231,23 @@ RUN set -ex \
   && cd .. \
   && rm -rf libframe-8.30 \
   && rm libframe-8.30.tar.gz
+  
+RUN set -ex \
+  && wget "ftp://ftp.gnu.org/gnu/gsl/gsl-2.3.tar.gz" \
+  && tar xfz gsl-2.3.tar.gz \
+  && cd gsl-2.3 \
+  && ./configure \
+  && make -j "$(nproc)" \
+  && make install \
+  && cd .. \
+  && rm -rf gsl-2.3 \
+  && rm  gsl-2.3.tar.gz
+ 
+RUN apt-get update \
+  && apt-get install libboost-all-dev \
+  && rm -rf /var/lib/apt/lists/*
+  
 
-
-  RUN set -ex \
-    && wget "http://sourceforge.net/projects/boost/files/boost_1_63_0.tar.bz2" \
-    && tar -jxf boost_1_63_0.tar.bz2 \
-    && cd boost_1_63_0 \
-    && ./bootstrap.sh  \
-          --with-libraries=serialization,signals,container,exception,thread \
-    && ./b2 stage threading=multi link=shared -j4 \
-    && cp bjam ./bin \
-    && cd tools/build \
-    && ./bootstrap.sh \
-    && ./b2 install  \
-    && cd ../../.. \
-    && rm -rf boost_1_63_0 \
-    && rm boost_1_63_0.tar.bz2
-
+ 
 
 CMD ["bash"]
