@@ -3,7 +3,7 @@ FROM elenacuoco/env_image
 RUN set -ex \
   && git clone https://github.com/elenacuoco/p4TSA \ 
   && cd p4TSA \
-  && cmake CMakeList.txt \
+  && cmake CMakeLists.txt \
   && make -j "$(nproc)" \
   && make install \
   && cd python-wrapper \
