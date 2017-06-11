@@ -1,5 +1,9 @@
 FROM python:3.6
 
+RUN apt-get update \
+  && apt-get update && apt-get install -y --no-install-recommends \
+  libboost-all-dev \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN set -ex \
     && wget "http://sqlite.org/2017/sqlite-autoconf-3160200.tar.gz" \
@@ -243,9 +247,7 @@ RUN set -ex \
   && rm -rf gsl-2.3 \
   && rm  gsl-2.3.tar.gz
  
-RUN apt-get update \
-  && apt-get install libboost-all-dev \
-  && rm -rf /var/lib/apt/lists/*
+
   
 
  
