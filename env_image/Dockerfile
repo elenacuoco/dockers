@@ -185,7 +185,7 @@ RUN pip install alabaster \
                 widgetsnbextension \
                 xgboost
 
-## DA CONTROLLARE    cp -fr ./include/pybind11/ ${ENV_ROOT}/include/python3.6m
+##  
 RUN set -ex \
      && git clone https://github.com/pybind/pybind11.git \
      && cd pybind11 \
@@ -238,7 +238,7 @@ RUN set -ex \
     && tar -jxf boost_1_63_0.tar.bz2 \
     && cd boost_1_63_0 \
     && ./bootstrap.sh  \
-          --with-libraries=serialization,python,signals,container,exception,thread \
+          --with-libraries=serialization,signals,container,exception,thread \
     && ./b2 stage threading=multi link=shared -j4 \
     && cp bjam ./bin \
     && cd tools/build \
