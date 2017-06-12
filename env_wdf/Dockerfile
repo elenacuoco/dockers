@@ -10,6 +10,6 @@ RUN set -ex \
   && python setup.py  install \
   && cd ../../ \
   && rm -fr p4TSA
-
+ CMD ["/sbin/ldconfig"]
  CMD ["bash"]
  
