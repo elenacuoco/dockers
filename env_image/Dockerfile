@@ -103,6 +103,7 @@ RUN pip install alabaster \
                 nose \
                 notebook \
                 notebook-viewer \
+                numba \
                 numdifftools \
                 numexpr \
                 numpy \
