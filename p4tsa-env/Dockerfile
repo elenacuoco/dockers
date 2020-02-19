@@ -16,7 +16,7 @@ RUN set -ex \
   && cd ../../ \
   && rm -fr p4TSA
 
-RUN ["/sbin/ldconfig"]
+RUN /sbin/ldconfig
 
 CMD ["bash"]
 
