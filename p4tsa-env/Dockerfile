@@ -1,4 +1,4 @@
-FROM elenacuoco/env_image
+FROM elenacuoco/env_image:2.0.0
 
 # Set environment
 ENV ENV_ROOT /usr/local
@@ -15,6 +15,8 @@ RUN set -ex \
   && python setup.py  install \
   && cd ../../ \
   && rm -fr p4TSA
- CMD ["/sbin/ldconfig"]
- CMD ["bash"]
- 
+
+RUN /sbin/ldconfig
+
+CMD ["bash"]
+
